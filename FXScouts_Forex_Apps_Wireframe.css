@@ -2890,3 +2890,11 @@ figcaption,
     transition:opacity .15s ease;
   }
 }
+
+/* v18.1 — emerald hover must outweigh the old purple rule */
+.site-header.fx-header .fx-menu-trigger:hover,
+.site-header.fx-header .fx-menu-trigger:focus-visible,
+.site-header.fx-header .fx-menu-item:hover > .fx-menu-trigger,
+.site-header.fx-header .fx-menu-item.is-open > .fx-menu-trigger{
+  color:var(--emerald)!important;
+}
