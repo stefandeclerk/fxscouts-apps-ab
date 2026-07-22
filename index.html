@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FxScouts Forex Trading Apps</title><meta name="description" content="Best Forex Trading Apps Tested and Reviewed."><link rel="stylesheet" href="FXScouts_Forex_Apps_Wireframe.css?v=19"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FxScouts Forex Trading Apps</title><meta name="description" content="Best Forex Trading Apps Tested and Reviewed."><link rel="stylesheet" href="FXScouts_Forex_Apps_Wireframe.css?v=23"></head>
 <body>
 <header class="site-header fx-header" id="top">
   <div class="container fx-header-inner">
@@ -899,6 +899,82 @@ The main limitation is that the app is not designed to replace a full desktop tr
     });
     desktop.addEventListener('change', closeHamPanel);
   }
+
+  /* Live-site photo thumbnails for menu links (extracted from fxscouts.com) */
+  const FX_THUMBS = {"/forex-brokers":"/wp-content/uploads/sites/20/2024/11/ECB-Building-resized-50x50.jpg","/forex-brokers/brokers-for-beginners":"/wp-content/uploads/sites/20/2024/04/Urban19-900x900-1-50x50.jpg","/forex-brokers/bonuses":"/wp-content/uploads/sites/20/2024/09/City-of-London-scaled-50x50.jpg","/forex-brokers/demo-accounts":"/wp-content/uploads/sites/20/2024/10/Hero-Demo-Library-50x50.jpg","/forex-brokers/lowest-spreads":"/wp-content/uploads/sites/20/2024/04/Urban18-400x400-1-50x50.jpg","/forex-brokers/islamic-accounts":"/wp-content/uploads/sites/20/2024/10/Dubai-800w-50x50.jpg","/forex-brokers/best-ecn-brokers":"/wp-content/uploads/sites/20/2024/04/Interface20-900x900-1-50x50.jpg","/forex-brokers/highest-leverage-forex-brokers":"/wp-content/uploads/sites/20/2024/11/Hero-Abstract-purple-circles.jpg","/forex-brokers/mt4-forex-brokers":"/wp-content/uploads/sites/20/2024/08/mt4-sign-50x50.png","/best-forex-trading-platforms":"/wp-content/uploads/sites/20/2024/04/Interface6-900x900-1-50x50.jpg","/forex-brokers/mt5-forex-brokers":"/wp-content/uploads/sites/20/2024/10/metatrader5-sign-1-1-50x50.png","/forex-brokers/best-copy-trading-forex-brokers":"/wp-content/uploads/sites/20/2024/04/Urban16-400x400-1-50x50.jpg","/forex-brokers/ctrader-brokers":"/wp-content/uploads/sites/20/2024/08/ctrader_round-50x50.png","/forex-trading-apps":"/wp-content/uploads/sites/20/2024/11/Trading-Apps-5050-resized-50x50.jpg","/forex-brokers/tradingview":"/wp-content/uploads/sites/20/2024/08/tradingview-sign-50x50.png","/cfd-trading":"/wp-content/uploads/sites/20/2024/04/Urban23-400x400-1-50x50.jpg","/cryptocurrency-trading":"/wp-content/uploads/sites/20/2024/06/bitcoin_1044x600-50x50.jpg","/forex-brokers/equities-brokers":"/wp-content/uploads/sites/20/2024/04/CityImage14-900x900-1-50x50.jpg","/forex-brokers/vix-volatility-brokers":"/wp-content/uploads/sites/20/2024/04/CityImage34-900x900-1-50x50.jpg","/forex-brokers/best-gold-trading-brokers":"/wp-content/uploads/sites/20/2024/09/City-of-London-scaled-50x50.jpg","/best-forex-brokers-in-the-uk":"/wp-content/uploads/sites/20/2025/11/122.jpg","/us/forex-brokers":"/wp-content/plugins/ls-framework/dist/img/country/us.svg","/forex-brokers/forex-brokers-in-canada":"/wp-content/plugins/ls-framework/dist/img/country/ca.svg","/dfsa":"/wp-content/plugins/ls-framework/dist/img/country/ae.svg","/best-forex-brokers-in-south-africa":"/wp-content/plugins/ls-framework/dist/img/country/za.svg","/best-forex-brokers-in-australia":"/wp-content/uploads/sites/20/2019/09/australia-flag-e1478544618800-1.png","/forex-brokers/best-forex-brokers-in-hong-kong":"/wp-content/uploads/sites/20/2026/03/Hong-Kong-Flag.png","/forex-brokers/best-forex-brokers-in-singapore":"/wp-content/uploads/sites/20/2026/03/Singapore-Flag-white-border.png","/forex-brokers/managed-forex-accounts":"/wp-content/uploads/sites/20/2024/11/MAMM-Accounts-5050-50x50.jpg","/spread-betting":"/wp-content/uploads/sites/20/2024/10/City-of-London-scaled-1-50x50.jpg","/broker/pepperstone":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/pepperstone.svg","/broker/tickmill":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/tickmill.svg","/broker/icmarkets":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/icmarkets.svg","/broker/blackbullmarkets":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/blackbullmarkets.svg","/broker/xm":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/xm.png","/broker/xtb":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/xtb.svg","/broker/ig":"/wp-content/themes/ls-theme-fxscouts/dist/img/broker/small/ig.svg","/broker-search":"/wp-content/themes/ls-theme-fxscouts/dist/img/nav-icons/circle-path.jpg","/broker-comparison":"/wp-content/uploads/sites/20/2024/04/HumanInterior16-900x900-1-50x50.jpg","/broker-trust-checker":"/wp-content/uploads/sites/20/2024/11/Hammer-50x50.jpg","/state-of-the-forex-market/trust-and-regulation":"/wp-content/uploads/sites/20/2026/04/Award-icon.png","/our-review-process":"/wp-content/themes/ls-theme-fxscouts/dist/img/nav-icons/circle-path.jpg","/trading-journal":"/wp-content/uploads/sites/20/2026/04/trading-journal-icon-1.png","/currency-pairs":"/wp-content/uploads/sites/20/2024/06/eurusd1_1044x600-50x50.jpg","/traders-hub":"/wp-content/uploads/sites/20/2026/04/Traders-Hub-Icon-v2.png","/economic-calendar":"/wp-content/uploads/sites/20/2024/04/Urban19-400x400-1-50x50.jpg","/tools/position-size-calculator":"/wp-content/themes/ls-theme-fxscouts/dist/img/nav-icons/rhombus-path.jpg","/tools/leverage-calculator":"/wp-content/themes/ls-theme-fxscouts/dist/img/nav-icons/rhombus-path.jpg","/pip-racer":"/wp-content/uploads/sites/20/2026/05/pip-racer-icon.png","/forex-education":"/wp-content/uploads/sites/20/2019/09/learn-to-trade-forex-50x50.jpg","/fxscouts-forex-video-tutorials":"/wp-content/uploads/sites/20/2025/09/video_page_menu_icon.png","/fxscouts-podcasts":"/wp-content/uploads/sites/20/2024/11/Podcast-header-resized-50x50.jpg","/quarterly-reports":"/wp-content/uploads/sites/20/2020/04/broker-review-trading-instruments.jpg","/forex-education/glossary":"/wp-content/uploads/sites/20/2025/06/glossary.jpg","/about-us":"/wp-content/uploads/sites/20/2024/08/2-1-300x300-1-50x50.png","/forex-awards":"/wp-content/uploads/sites/20/2024/04/HumanInterior30-1920x1200-1-50x50.jpg","/about-us/why-trust-us":"https://fxscouts.br.com/wp-content/uploads/sites/3/2025/03/shaking-hands-euro.jpg","/about-us/contact-us":"/wp-content/uploads/sites/20/2024/04/HumanInterior18-900x900-1-50x50.jpg","/about-us/risk-disclosure":"/wp-content/themes/ls-theme-fxscouts/dist/img/nav-icons/dodecagon-path.jpg","/events":"/wp-content/uploads/sites/20/2025/05/forex-webinars-menu-icon.jpg"};
+  document.querySelectorAll('.fx-link-grid a').forEach(function (a) {
+    let u;
+    try { u = new URL(a.href); } catch (e) { return; }
+    if (!/fxscouts\.com$/.test(u.hostname)) return;
+    const src = FX_THUMBS[u.pathname.replace(/\/$/, '')];
+    if (!src) return;
+    const img = document.createElement('img');
+    img.src = src.indexOf('http') === 0 ? src : 'https://fxscouts.com' + src;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.className = 'fx-thumb' + (/\.(svg|png)(\?|$)/.test(src) ? ' fx-thumb-logo' : '');
+    a.classList.add('has-thumb');
+    a.prepend(img);
+  });
+
+  /* Directional panel slide: content enters from the side you're moving toward */
+  document.querySelectorAll('.fx-mega-tabs').forEach(function (tabs) {
+    const buttons = Array.prototype.slice.call(tabs.querySelectorAll('[data-tab]'));
+    let last = buttons.findIndex(function (b) { return b.classList.contains('is-active'); });
+    tabs.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-tab]');
+      if (!btn) return;
+      const idx = buttons.indexOf(btn);
+      if (idx < 0 || idx === last) return;
+      const mega = tabs.closest('.fx-mega');
+      const panel = mega && mega.querySelector('.fx-mega-panel.is-active');
+      if (panel) {
+        panel.classList.remove('fx-slide-up', 'fx-slide-down');
+        void panel.offsetWidth;
+        panel.classList.add(idx > last ? 'fx-slide-down' : 'fx-slide-up');
+      }
+      last = idx;
+    });
+  });
+
+  /* Shared-panel behavior: while a menu is open, moving to another nav
+     item crossfades content in place (no close/reopen) — live mechanic */
+  const fxHeader = document.querySelector('.fx-header');
+  if (fxHeader) {
+    let hotTimer = null;
+    let anyOpen = false;
+    document.querySelectorAll('.fx-menu-item.has-mega').forEach(function (item) {
+      item.addEventListener('mouseenter', function () {
+        clearTimeout(hotTimer);
+        if (anyOpen) fxHeader.classList.add('fx-menu-hot');
+        anyOpen = true;
+      });
+      item.addEventListener('mouseleave', function () {
+        clearTimeout(hotTimer);
+        hotTimer = setTimeout(function () {
+          anyOpen = false;
+          fxHeader.classList.remove('fx-menu-hot');
+        }, 350);
+      });
+    });
+  }
+
+  /* Close button on each nav mega (live-site ✕); reopens after mouse leaves */
+  document.querySelectorAll('.fx-menu-item .fx-mega').forEach(function (mega) {
+    const x = document.createElement('button');
+    x.type = 'button';
+    x.className = 'fx-mega-x' + (mega.querySelector('.fx-menu-promo') ? ' on-promo' : '');
+    x.setAttribute('aria-label', 'Close menu');
+    x.innerHTML = '&times;';
+    x.addEventListener('click', function () {
+      mega.classList.add('fx-force-closed');
+      const item = mega.closest('.fx-menu-item');
+      if (item) item.classList.remove('is-open');
+    });
+    mega.appendChild(x);
+    const item = mega.closest('.fx-menu-item');
+    if (item) item.addEventListener('mouseleave', function () { mega.classList.remove('fx-force-closed'); });
+  });
 })();
 </script><script>
 document.addEventListener('DOMContentLoaded', function () {

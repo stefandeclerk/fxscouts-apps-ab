@@ -2689,3 +2689,204 @@ figcaption,
   font-size:14px;
   line-height:1.4;
 }
+
+/* ============================================================
+   FxScouts v17 — exact live-menu match:
+   emerald hover, notch triangles, wide sharp panel, photo
+   thumbnails, flush promo banner, directional panel slide, ✕
+   ============================================================ */
+
+/* Nav trigger: emerald on hover/open (live behavior) */
+.fx-menu-trigger:hover,
+.fx-menu-trigger:focus-visible,
+.fx-menu-item:hover > .fx-menu-trigger,
+.fx-menu-item.is-open > .fx-menu-trigger{
+  color:var(--emerald)!important;
+}
+.fx-nav-indicator{background:var(--emerald)}
+
+/* Notch triangle under the open item */
+@media(min-width:1181px){
+  .fx-menu-item{position:relative}
+  .fx-menu-item::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%);
+    border:9px solid transparent;
+    border-bottom:9px solid #fff;
+    border-top:0;
+    opacity:0;
+    pointer-events:none;
+    z-index:1;
+    transition:opacity .2s ease .15s;
+  }
+  .fx-menu-item:hover::before,
+  .fx-menu-item:focus-within::before,
+  .fx-menu-item.is-open::before{
+    opacity:1;
+    transition:opacity .2s ease .12s;
+  }
+
+  /* Panel: wide, sharp-cornered, zero outer padding */
+  .fx-menu-item .fx-mega,
+  .fx-hamburger-mega{
+    width:min(1440px,calc(100vw - 48px));
+    border-radius:0;
+    grid-template-columns:230px minmax(0,1fr) 225px;
+    gap:0;
+  }
+  .fx-mega-simple{grid-template-columns:230px minmax(0,1fr)}
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega,
+  .fx-hamburger-mega.is-open{
+    padding:0;
+  }
+  .fx-mega-tabs{padding:24px 8px 24px 24px}
+  .fx-mega-panels{padding:24px 28px}
+  .fx-mega-simple > .fx-mega-panel{padding:24px 28px}
+  .fx-mega .fx-menu-promo,
+  .fx-hamburger-mega .fx-menu-promo{
+    border-radius:0;
+    min-height:100%;
+    margin:0;
+  }
+  /* force-closed via ✕ until the pointer leaves */
+  .fx-mega.fx-force-closed{
+    max-height:0!important;
+    padding:0!important;
+    box-shadow:none!important;
+    pointer-events:none!important;
+  }
+}
+
+/* Sidebar active tab: right-pointing arrow notch */
+.fx-mega-tabs button{position:relative}
+.fx-mega-tabs button.is-active::after{
+  content:"";
+  position:absolute;
+  left:100%;
+  top:50%;
+  transform:translateY(-50%);
+  border:9px solid transparent;
+  border-left:9px solid #fff;
+  border-right:0;
+}
+
+/* Photo thumbnails (live assets) replace gradient squares */
+.fx-link-grid a.has-thumb::before{display:none}
+.fx-link-grid a.has-thumb{padding-left:68px}
+.fx-link-grid .fx-thumb{
+  position:absolute;
+  left:10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:36px;
+  object-fit:cover;
+  border-radius:5px;
+  transition:width .15s ease,height .15s ease;
+}
+.fx-link-grid .fx-thumb-logo{
+  object-fit:contain;
+  background:#fff;
+  border:1px solid var(--grey-mid);
+  padding:3px;
+}
+.fx-link-grid a:hover .fx-thumb{width:47px;height:39px}
+.fx-link-grid strong{font-size:15px}
+
+/* Promo: real Trading Journal banner art, flush */
+.fx-menu-promo[href*="trading-journal"]{
+  background:url("https://fxscouts.com/wp-content/uploads/sites/20/2026/04/Trading-Journal-banner-210-x-320-px.png") center/cover no-repeat;
+}
+.fx-menu-promo[href*="trading-journal"] strong,
+.fx-menu-promo[href*="trading-journal"] span{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+}
+
+/* Directional slide between sidebar categories */
+@keyframes fxPanelFromBottom{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fxPanelFromTop{
+  from{opacity:0;transform:translateY(-18px)}
+  to{opacity:1;transform:none}
+}
+.fx-mega-panel.fx-slide-down{animation:fxPanelFromBottom .28s ease both}
+.fx-mega-panel.fx-slide-up{animation:fxPanelFromTop .28s ease both}
+
+/* ✕ on nav megas */
+.fx-mega-x{
+  position:absolute;
+  top:12px;
+  right:14px;
+  z-index:2;
+  width:30px;
+  height:30px;
+  border:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+}
+.fx-mega-x.on-promo{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.45)}
+.fx-mega-x:hover{color:var(--emerald)}
+@media(max-width:1180px){
+  .fx-mega-x{display:none}
+}
+
+/* v17.1 — simple menus (no sidebar) keep single-column layout */
+@media(min-width:1181px){
+  .fx-mega-simple{grid-template-columns:minmax(0,1fr);width:min(880px,calc(100vw - 48px))}
+}
+
+/* v17.2 — simple-menu selector must outweigh the panel-geometry rule */
+@media(min-width:1181px){
+  .fx-menu-item .fx-mega.fx-mega-simple{
+    grid-template-columns:minmax(0,1fr);
+    width:min(880px,calc(100vw - 48px));
+  }
+}
+
+/* ============================================================
+   FxScouts v18 — shared-panel crossfade (video frame 8):
+   while a menu is open, switching nav items fades content in
+   place; the curtain only runs on first open and final close
+   ============================================================ */
+@media(min-width:1181px){
+  .fx-header.fx-menu-hot .fx-menu-item .fx-mega{
+    opacity:0;
+    transition:
+      opacity .22s ease,
+      max-height 0s linear .22s,
+      padding 0s linear .22s,
+      box-shadow 0s linear .22s;
+  }
+  .fx-header.fx-menu-hot .fx-menu-item:hover .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item:focus-within .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item.is-open .fx-mega{
+    opacity:1;
+    max-height:calc(100vh - 76px);
+    padding:0;
+    box-shadow:0 30px 60px rgba(0,39,79,.22),0 4px 14px rgba(0,39,79,.10);
+    transition:opacity .22s ease;
+  }
+  /* content follows the panel fade directly in hot mode */
+  .fx-header.fx-menu-hot .fx-menu-item .fx-mega > *{
+    opacity:1;
+    transition:none;
+  }
+  /* notch swaps without the intent delay while hot */
+  .fx-header.fx-menu-hot .fx-menu-item::before{
+    transition:opacity .15s ease;
+  }
+}
