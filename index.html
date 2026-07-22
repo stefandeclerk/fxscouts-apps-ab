@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FxScouts Forex Trading Apps</title><meta name="description" content="Best Forex Trading Apps Tested and Reviewed."><link rel="stylesheet" href="FXScouts_Forex_Apps_Wireframe.css?v=3"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FxScouts Forex Trading Apps</title><meta name="description" content="Best Forex Trading Apps Tested and Reviewed."><link rel="stylesheet" href="FXScouts_Forex_Apps_Wireframe.css?v=19"></head>
 <body>
 <header class="site-header fx-header" id="top">
   <div class="container fx-header-inner">
@@ -221,10 +221,51 @@
       </div>
     </nav>
     <div class="fx-header-actions">
-      <a class="fx-login" href="https://fxscouts.com/fxscouts-login">Sign up / Log in</a>
-      <button class="fx-icon-button fx-search-toggle" type="button" aria-label="Search"></button>
-      <button class="fx-icon-button fx-lang-toggle" type="button" aria-label="Choose country or region"></button>
-      <button class="fx-icon-button fx-menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a class="fx-login" href="https://fxscouts.com/fxscouts-login"><span>Sign up / Log in</span><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M10 17l5-5-5-5v3H3v4h7v3zM19 3h-8v2h8v14h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></a>
+      <button class="fx-icon-button fx-search-toggle" type="button" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></button>
+      <button class="fx-icon-button fx-lang-toggle" type="button" aria-label="Choose country or region"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><ellipse cx="12" cy="12" rx="4.2" ry="9"/></svg></button>
+      <button class="fx-icon-button fx-menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <div class="fx-mega fx-hamburger-mega" id="fx-hamburger-menu" aria-label="More from FxScouts">
+      <div class="fx-mega-tabs" role="tablist" aria-label="More categories">
+        <button class="is-active" type="button" data-tab="ham-resources">Resources</button>
+        <button type="button" data-tab="ham-policies">Policies &amp; Guidelines</button>
+        <button type="button" data-tab="ham-account">My Account</button>
+      </div>
+      <div class="fx-mega-panels">
+        <section class="fx-mega-panel is-active" data-panel="ham-resources" aria-label="Resources">
+          <h3>Resources</h3>
+          <div class="fx-link-grid">
+            <a href="https://fxscouts.com/broker-trust-checker/"><strong>Broker Trust Checker</strong><span>Check broker credibility</span></a>
+            <a href="https://fxscouts.com/fxscouts-podcasts/"><strong>FxScouts Podcasts</strong><span>Market conversations</span></a>
+            <a href="https://fxscouts.com/broker-comparison/"><strong>Compare Forex Brokers</strong><span>Side-by-side comparison</span></a>
+            <a href="https://fxscouts.com/events/"><strong>Forex Webinars</strong><span>Live trading events</span></a>
+          </div>
+        </section>
+        <section class="fx-mega-panel" data-panel="ham-policies" aria-label="Policies and guidelines">
+          <h3>Policies &amp; Guidelines</h3>
+          <div class="fx-link-grid">
+            <a href="https://fxscouts.com/about-us/editorial-policy/"><strong>Editorial Policy</strong><span>How we report</span></a>
+            <a href="https://fxscouts.com/about-us/privacy-policy/"><strong>Privacy Policy</strong><span>Your data, protected</span></a>
+            <a href="https://fxscouts.com/about-us/terms-of-service/"><strong>Terms of Service</strong><span>Rules of use</span></a>
+            <a href="https://fxscouts.com/about-us/risk-disclosure/"><strong>Risk Disclosure</strong><span>Trading risk information</span></a>
+            <a href="https://fxscouts.com/about-us/ai-policy/"><strong>AI Policy</strong><span>How we use AI</span></a>
+            <a href="https://fxscouts.com/advertiser-disclosure/"><strong>Advertiser Disclosure</strong><span>How we're funded</span></a>
+          </div>
+        </section>
+        <section class="fx-mega-panel" data-panel="ham-account" aria-label="My account">
+          <h3>My Account</h3>
+          <div class="fx-link-grid">
+            <a href="https://fxscouts.com/fxscouts-login"><strong>Log in to your account</strong><span>Access your saved brokers</span></a>
+            <a href="https://fxscouts.com/fxscouts-login"><strong>Create a free account</strong><span>Save comparisons and reviews</span></a>
+          </div>
+        </section>
+      </div>
+      <a class="fx-menu-promo" href="https://fxscouts.com/broker-comparison/">
+        <strong>Compare Forex Brokers!</strong>
+        <span>Compare top Forex brokers side-by-side and find the best fit for your trading needs.</span>
+      </a>
+      <button class="fx-hamburger-close" type="button" aria-label="Close menu">&times;</button>
     </div>
   </div>
   <div class="fx-search-panel" hidden>
@@ -305,7 +346,7 @@
   <aside class="review-left">
     <span class="rank-badge">#1 For beginners</span>
     <img class="review-logo" src="https://fxscouts.com/wp-content/themes/ls-theme-fxscouts/dist/img/app/medium/avatradego.png" alt="AvaTrade App logo">
-    <div class="review-actions"><a class="button primary" href="https://fxscouts.com/go/broker/avatrade/signup/">Visit broker</a><a class="button tertiary" href="https://fxscouts.com/broker/avatrade/">Read broker review</a><a class="button tertiary" href="https://fxscouts.com/broker-comparison/avatrade-vs-pepperstone/">Compare features</a></div>
+    <div class="review-actions"><a class="button primary" href="https://fxscouts.com/go/broker/avatrade/signup/">Visit broker</a><a class="review-link" href="https://fxscouts.com/broker/avatrade/">Read broker review</a><a class="review-link" href="https://fxscouts.com/broker-comparison/avatrade-vs-pepperstone/">Compare features</a></div>
   </aside>
   <div class="review-body">
     <div class="review-title-row"><div><h3>AvaTrade App</h3><p class="best-for">For beginners who want an intuitive and modern app with built-in risk protection.</p></div><span class="type-pill">Broker owned</span></div>
@@ -343,7 +384,7 @@ The main limitation is that the app is not designed to replace a full desktop tr
   <aside class="review-left">
     <span class="rank-badge">#2 Best charting</span>
     <img class="review-logo" src="https://fxscouts.com/wp-content/themes/ls-theme-fxscouts/dist/img/app/medium/tradingview.png" alt="TradingView App logo">
-    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/forexcom/visit/">FOREX.com</a></li><li><a href="https://fxscouts.com/go/broker/icmarkets/visit/">IC Markets</a></li></ul></div></details><details class="cta-popout"><summary class="button tertiary">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/forexcom/">FOREX.com review</a></li><li><a href="https://fxscouts.com/broker/icmarkets/">IC Markets review</a></li></ul></div></details><a class="button tertiary" href="#compare">Compare features</a></div>
+    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/forexcom/visit/">FOREX.com</a></li><li><a href="https://fxscouts.com/go/broker/icmarkets/visit/">IC Markets</a></li></ul></div></details><details class="cta-popout"><summary class="review-link">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/forexcom/">FOREX.com review</a></li><li><a href="https://fxscouts.com/broker/icmarkets/">IC Markets review</a></li></ul></div></details><a class="review-link" href="#compare">Compare features</a></div>
   </aside>
   <div class="review-body">
     <div class="review-title-row"><div><h3>TradingView App</h3><p class="best-for">For traders who want best-in-class charting, clean mobile analysis, and broker execution where supported.</p></div><span class="type-pill">Third Party</span></div>
@@ -376,7 +417,7 @@ The main limitation is that the app is not designed to replace a full desktop tr
   <aside class="review-left">
     <span class="rank-badge">#3 Modern platform</span>
     <img class="review-logo" src="https://fxscouts.com/wp-content/themes/ls-theme-fxscouts/dist/img/app/medium/ctrader.png" alt="cTrader App logo">
-    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/fusionmarkets/visit/">Fusion Markets</a></li></ul></div></details><details class="cta-popout"><summary class="button tertiary">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/fusionmarkets/">Fusion Markets review</a></li></ul></div></details><a class="button tertiary" href="https://fxscouts.com/broker-comparison/">Compare features</a></div>
+    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/fusionmarkets/visit/">Fusion Markets</a></li></ul></div></details><details class="cta-popout"><summary class="review-link">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/fusionmarkets/">Fusion Markets review</a></li></ul></div></details><a class="review-link" href="https://fxscouts.com/broker-comparison/">Compare features</a></div>
   </aside>
   <div class="review-body">
     <div class="review-title-row"><div><h3>cTrader App</h3><p class="best-for">Best for beginners who want a cleaner alternative to MetaTrader and technical traders interested in programmatic trading.</p></div><span class="type-pill">Third Party</span></div>
@@ -408,7 +449,7 @@ The main limitation is that the app is not designed to replace a full desktop tr
   <aside class="review-left">
     <span class="rank-badge">#4 Advanced all-rounder</span>
     <img class="review-logo" src="https://fxscouts.com/wp-content/themes/ls-theme-fxscouts/dist/img/app/medium/metatrader5.png" alt="MT5 App logo">
-    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/hotforex/visit/">HFM</a></li></ul></div></details><details class="cta-popout"><summary class="button tertiary">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/hotforex/">HFM review</a></li></ul></div></details><a class="button tertiary" href="https://fxscouts.com/broker-comparison/">Compare features</a></div>
+    <div class="review-actions"><details class="cta-popout"><summary class="button primary">Visit supporting brokers</summary><div class="popout-panel"><strong>Supporting brokers</strong><ul><li><a href="https://fxscouts.com/go/broker/fpmarkets/visit/">FP Markets</a></li><li><a href="https://fxscouts.com/go/broker/pepperstone/visit/">Pepperstone</a></li><li><a href="https://fxscouts.com/go/broker/hotforex/visit/">HFM</a></li></ul></div></details><details class="cta-popout"><summary class="review-link">View broker reviews</summary><div class="popout-panel"><strong>Broker review links</strong><ul><li><a href="https://fxscouts.com/broker/fpmarkets/">FP Markets review</a></li><li><a href="https://fxscouts.com/broker/pepperstone/">Pepperstone review</a></li><li><a href="https://fxscouts.com/broker/hotforex/">HFM review</a></li></ul></div></details><a class="review-link" href="https://fxscouts.com/broker-comparison/">Compare features</a></div>
   </aside>
   <div class="review-body">
     <div class="review-title-row"><div><h3>MT5 App</h3><p class="best-for">For intermediate and advanced traders who want a powerful all-round platform with strong mobile trading tools.</p></div><span class="type-pill">Third Party</span></div>
@@ -440,7 +481,7 @@ The main limitation is that the app is not designed to replace a full desktop tr
   <aside class="review-left">
     <span class="rank-badge">#5 Polished proprietary</span>
     <img class="review-logo" src="https://fxscouts.com/wp-content/themes/ls-theme-fxscouts/dist/img/app/medium/xstationapp.png" alt="xStation App logo">
-    <div class="review-actions"><a class="button primary" href="https://fxscouts.com/go/broker/xtb/visit/">Visit XTB</a><a class="button tertiary" href="https://fxscouts.com/broker/xtb/">Read XTB review</a><a class="button tertiary" href="#compare">Compare features</a></div>
+    <div class="review-actions"><a class="button primary" href="https://fxscouts.com/go/broker/xtb/visit/">Visit XTB</a><a class="review-link" href="https://fxscouts.com/broker/xtb/">Read XTB review</a><a class="review-link" href="#compare">Compare features</a></div>
   </aside>
   <div class="review-body">
     <div class="review-title-row"><div><h3>xStation App</h3><p class="best-for">For beginners who want a polished proprietary app with strong market access, built-in tools, and a clean interface.</p></div><span class="type-pill">Broker owned</span></div>
@@ -721,7 +762,7 @@ The main limitation is that the app is not designed to replace a full desktop tr
     </div>
   </div>
 </section>
-<aside class="sticky-cta"><div><strong>Ready to compare forex trading apps?</strong><span>Jump back to the app cards or open the comparison table.</span></div><a class="button secondary" href="#apps">Compare top apps</a></aside>
+<aside class="sticky-cta" id="sticky-cta"><div><strong>Ready to compare forex trading apps?</strong><span>Jump back to the app cards or open the comparison table.</span></div><a class="button secondary" href="#apps">Compare top apps</a><button class="sticky-cta-close" type="button" aria-label="Dismiss">&times;</button></aside>
 </main><footer class="site-footer">
   <div class="container">
     <div class="footer-disclosures">
@@ -771,6 +812,95 @@ The main limitation is that the app is not designed to replace a full desktop tr
     </div>
   </div>
 </footer><script>const buttons=document.querySelectorAll('.filter-chips button');const rows=document.querySelectorAll('.comparison-table tbody tr');const empty=document.querySelector('.empty-state');buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;let visible=0;rows.forEach(row=>{const show=filter==='all'||row.dataset.category.split(' ').includes(filter);row.hidden=!show;if(show)visible+=1;});if(empty)empty.hidden=visible!==0;}));</script><script>
+(function () {
+  const sticky = document.getElementById('sticky-cta');
+  const hero = document.querySelector('.hero');
+  if (!sticky || !hero) return;
+  let dismissed = false;
+  const closeBtn = sticky.querySelector('.sticky-cta-close');
+  function updateSticky() {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    sticky.classList.toggle('is-visible', !dismissed && window.scrollY > heroBottom - 120);
+  }
+  window.addEventListener('scroll', updateSticky, { passive: true });
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      dismissed = true;
+      sticky.classList.remove('is-visible');
+      window.removeEventListener('scroll', updateSticky);
+    });
+  }
+})();
+</script><script>
+(function () {
+  /* Flowing nav underline: one indicator glides between hovered items */
+  const nav = document.querySelector('.fx-menu');
+  if (!nav) return;
+  const ind = document.createElement('li');
+  ind.className = 'fx-nav-indicator';
+  ind.setAttribute('aria-hidden', 'true');
+  nav.appendChild(ind);
+  let visible = false;
+  function moveTo(trigger) {
+    const item = trigger.closest('.fx-menu-item');
+    const left = (item ? item.offsetLeft : 0) + trigger.offsetLeft + 15;
+    const width = trigger.offsetWidth - 30;
+    if (!visible) {
+      ind.style.transition = 'none';
+      ind.style.left = left + 'px';
+      ind.style.width = width + 'px';
+      ind.getBoundingClientRect();
+      ind.style.transition = '';
+    } else {
+      ind.style.left = left + 'px';
+      ind.style.width = width + 'px';
+    }
+    ind.style.opacity = '1';
+    visible = true;
+  }
+  nav.querySelectorAll('.fx-menu-trigger').forEach(function (t) {
+    t.addEventListener('mouseenter', function () { moveTo(t); });
+    t.addEventListener('focus', function () { moveTo(t); });
+  });
+  nav.addEventListener('mouseleave', function () {
+    ind.style.opacity = '0';
+    visible = false;
+  });
+
+  /* Mega menu sidebars: switch category panels on hover, like live */
+  document.querySelectorAll('.fx-mega-tabs [data-tab]').forEach(function (btn) {
+    btn.addEventListener('mouseenter', function () { btn.click(); });
+  });
+
+  /* Desktop hamburger: mega-style panel (live-site pattern), drawer on mobile */
+  const hamPanel = document.getElementById('fx-hamburger-menu');
+  const hamToggle = document.querySelector('.fx-menu-toggle');
+  const desktop = window.matchMedia('(min-width: 1181px)');
+  if (hamPanel && hamToggle) {
+    function closeHamPanel() {
+      hamPanel.classList.remove('is-open');
+      hamToggle.setAttribute('aria-expanded', 'false');
+    }
+    hamToggle.addEventListener('click', function (e) {
+      if (!desktop.matches) return;
+      e.stopImmediatePropagation();
+      const open = !hamPanel.classList.contains('is-open');
+      hamPanel.classList.toggle('is-open', open);
+      hamToggle.setAttribute('aria-expanded', String(open));
+    });
+    hamPanel.querySelector('.fx-hamburger-close').addEventListener('click', closeHamPanel);
+    document.addEventListener('click', function (e) {
+      if (hamPanel.classList.contains('is-open') && !hamPanel.contains(e.target) && !hamToggle.contains(e.target)) closeHamPanel();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeHamPanel();
+    });
+    desktop.addEventListener('change', closeHamPanel);
+  }
+})();
+</script><script>
 document.addEventListener('DOMContentLoaded', function () {
   function wireCarousel(carousel, slideSelector) {
     const slides = Array.from(carousel.querySelectorAll(slideSelector));
