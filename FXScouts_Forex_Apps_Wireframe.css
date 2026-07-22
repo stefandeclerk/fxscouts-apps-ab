@@ -1736,3 +1736,956 @@ figcaption,
   .footer-main{grid-template-columns:1fr}
   .site-footer{margin-top:56px;padding-top:44px}
 }
+
+/* ============================================================
+   FxScouts v4 — dark hero, prop-site component system
+   Sources: FxScouts-Prop-Trading (BannerHero, BrokerCards,
+   MiniReviewCards, Footer) + live fxscouts.com
+   ============================================================ */
+
+/* --- Buttons: compact, prop-site spec --- */
+.button,
+.fx-search-form button,
+.fx-close-search{
+  font-size:13.5px;
+  font-weight:600;
+  letter-spacing:0;
+  padding:9px 18px;
+  border-radius:10px;
+  min-height:0;
+  line-height:1.3;
+}
+.review-actions .button,
+.cta-popout summary.button{
+  min-height:36px;
+  padding:8px 14px;
+  font-size:12.5px;
+  border-radius:999px;
+}
+.hero-actions .button{padding:10px 20px;font-size:14px;border-radius:10px}
+.button.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.button.primary:hover,
+.button.primary:focus-visible{background:#5a4dd1;border-color:#5a4dd1;box-shadow:0 4px 14px rgba(111,95,244,.25)}
+.button.tertiary{
+  background:#fff;
+  color:var(--purple);
+  border:1px solid var(--purple);
+}
+.button.tertiary:hover,
+.button.tertiary:focus-visible{background:#f7f6ff;box-shadow:none}
+.button:hover,
+.button:focus-visible{transform:none}
+.button:active{transform:translateY(1px)}
+.toc-bar a,
+.filter-chips button{font-size:13px}
+.filter-chips button{padding:8px 14px}
+.sticky-cta .button{padding:8px 16px;font-size:13px;min-height:0;border-radius:999px}
+
+/* --- Dark hero (prop BannerHero) --- */
+.hero{
+  background:
+    radial-gradient(ellipse at 85% -20%,rgba(111,95,244,.40),transparent 50%),
+    radial-gradient(ellipse at -10% 120%,rgba(29,172,223,.28),transparent 45%),
+    linear-gradient(115deg,#00274F 0%,#0E2158 55%,#401E8B 100%);
+  color:#fff;
+  border-bottom:1px solid var(--grey-mid);
+}
+.hero .section-pad,
+.hero.section-pad{padding:56px 0 64px}
+.breadcrumb{color:rgba(255,255,255,.65)}
+.intro-card h1{
+  color:#fff;
+  font-weight:800;
+  font-size:clamp(36px,4vw,48px);
+  line-height:1.05;
+  text-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+.text-accent{
+  background:linear-gradient(90deg,var(--banking),var(--mint));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.lead{color:rgba(241,245,249,.92);font-size:17px;text-shadow:0 1px 5px rgba(0,0,0,.3)}
+.meta-pill{color:rgba(255,255,255,.75)}
+.meta-pill::before{border-color:var(--mint);color:var(--mint)}
+.hero .button.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.hero .button.primary:hover{background:#5a4dd1;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.hero .button.secondary{background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.85);color:#111827}
+.hero .button.secondary:hover{background:#e7edf5}
+.hero .button.ghost{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff}
+.hero .button.ghost:hover{background:rgba(255,255,255,.12)}
+
+/* --- Decision module: glass card on dark hero --- */
+.decision-module{
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:16px;
+  box-shadow:none;
+  backdrop-filter:blur(6px);
+  color:#fff;
+}
+.decision-module h2{color:#fff;font-weight:700}
+.decision-module p{color:rgba(255,255,255,.75)}
+.wireframe-tag{background:var(--mint);color:var(--navy)}
+.decision-card{box-shadow:0 1px 0 rgba(15,23,42,.04)}
+.decision-card:hover{box-shadow:0 10px 26px rgba(0,10,30,.35)}
+
+/* --- Gradient section headings (prop .h2 spec) --- */
+.section-heading h2,
+.mobile-desktop-section h2,
+.finder-intro h3{
+  background:linear-gradient(90deg,var(--purple) 0%,var(--emerald) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:var(--emerald);
+  font-weight:800;
+  font-size:clamp(26px,3vw,32px);
+  width:fit-content;
+}
+.section-heading > div,
+.finder-intro > div{border-left:1px dashed rgba(111,95,244,.4);padding-left:22px}
+
+/* --- Review cards: prop BrokerCards spec --- */
+.review-card{
+  background:#F5F8FC;
+  border:1px solid var(--grey-mid);
+  border-radius:16px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05);
+  padding:22px;
+}
+.review-left{border-right:1px dashed var(--grey-mid);padding-right:22px}
+.review-logo{background:#fff;border-color:var(--grey-mid)}
+.rank-badge{background:var(--purple);color:#fff;font-size:12px;padding:6px 12px;white-space:nowrap}
+.type-pill{
+  background:#fff;
+  border:1px solid var(--grey-mid);
+  color:#64748b;
+  font-size:11px;
+  padding:5px 10px;
+  white-space:nowrap;
+  align-self:start;
+}
+.compact-meta{gap:10px}
+.compact-meta span{
+  background:#fff;
+  border:0;
+  border-radius:12px;
+  box-shadow:0 1px 0 rgba(15,23,42,.04);
+  padding:10px 12px;
+  font-size:12.5px;
+  color:#64748b;
+}
+.compact-meta b{font-size:15px}
+.compact-pros div{border-top:1px dashed var(--grey-mid)}
+.full-review{border-top:1px dashed var(--grey-mid)}
+.full-review summary{
+  background:#fff;
+  border:1px solid var(--grey-mid);
+  border-radius:10px;
+  color:var(--purple);
+  font-size:13.5px;
+  padding:11px 14px;
+}
+.full-review summary:hover{border-color:var(--purple);background:#f7f6ff}
+.media-frame{background:#fff}
+.popout-panel{border-radius:12px}
+
+/* --- Comparison band --- */
+.comparison-table,
+.mobile-desktop-table,
+.platform-fit-table{border-radius:12px}
+.comparison-table tbody tr:nth-child(odd) td{background:#fcfdff}
+.comparison-table tbody tr:hover td{background:var(--paper)}
+
+/* --- FAQ / method cards --- */
+.method-card,
+.faq-card{
+  background:#F5F8FC;
+  border:1px solid var(--grey-mid);
+  border-radius:12px;
+}
+.step-list div{background:#F5F8FC}
+
+/* --- Footer: prop Footer.tsx spec (small text, dashed, mint) --- */
+.site-footer{padding-top:44px}
+.footer-disclosures{
+  border-bottom:1px dashed rgba(255,255,255,.35);
+  padding-bottom:30px;
+}
+.footer-disclosures h4{font-size:13px;font-weight:600;letter-spacing:.02em}
+.footer-disclosures p{font-size:11px;line-height:1.7;color:rgba(226,232,240,.75)}
+.footer-main{padding:32px 0 36px;gap:36px}
+.footer-brand img{width:150px;margin-bottom:14px}
+.footer-brand p{font-size:11px;line-height:1.7;color:rgba(226,232,240,.7)}
+.footer-col h4{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.05em;
+  text-transform:none;
+  color:#fff;
+}
+.footer-col ul{gap:8px}
+.footer-col a{font-size:12.5px;font-weight:500;color:rgba(226,232,240,.9)}
+.footer-col a:hover,
+.footer-col a:focus-visible{color:var(--mint);text-decoration:underline}
+.footer-bottom{
+  border-top:1px dashed rgba(255,255,255,.35);
+  font-size:11.5px;
+  color:rgba(226,232,240,.7);
+}
+
+/* --- Responsive guards --- */
+@media(max-width:1080px){
+  .review-left{border-right:0;border-bottom:1px dashed var(--grey-mid);padding:0 0 16px}
+  .review-actions{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  .intro-card h1{font-size:34px}
+  .review-actions{grid-template-columns:1fr}
+  .section-heading h2,.mobile-desktop-section h2{font-size:25px}
+}
+
+/* ============================================================
+   FxScouts v5 — CTA hierarchy, animated dropdowns, sticky CTA
+   ============================================================ */
+
+/* --- Card CTA rail: one button + text links (MiniReviewCards) --- */
+.review-actions{gap:4px;justify-items:center}
+.review-actions .button.primary{
+  width:100%;
+  min-height:38px;
+  font-size:13px;
+  padding:8px 14px;
+}
+.review-link,
+.cta-popout summary.review-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--purple);
+  cursor:pointer;
+  list-style:none;
+  border-radius:8px;
+  text-align:center;
+}
+.cta-popout summary.review-link::-webkit-details-marker{display:none}
+.review-link:hover,
+.review-link:focus-visible{text-decoration:underline;text-underline-offset:3px}
+
+/* --- Chevrons: consistent, rotating --- */
+.cta-popout summary.review-link::after,
+.cta-popout summary.button::after{
+  content:"";
+  width:7px;
+  height:7px;
+  border-right:1.8px solid currentColor;
+  border-bottom:1.8px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);
+  transition:transform .2s ease;
+  flex:none;
+}
+.cta-popout[open] summary.review-link::after,
+.cta-popout[open] summary.button::after{
+  transform:translateY(1px) rotate(225deg);
+}
+.cta-popout summary.button{display:inline-flex;gap:8px}
+.full-review summary span{
+  font-size:0;
+  width:8px;
+  height:8px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:translateY(-2px) rotate(45deg);
+  transition:transform .2s ease;
+  flex:none;
+}
+.full-review[open] summary span{transform:translateY(1px) rotate(225deg)}
+.fx-drawer-extras summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.fx-drawer-extras summary::after{
+  content:"";
+  width:7px;
+  height:7px;
+  border-right:2px solid var(--purple);
+  border-bottom:2px solid var(--purple);
+  transform:translateY(-2px) rotate(45deg);
+  transition:transform .2s ease;
+}
+.fx-drawer-extras details[open] summary::after{transform:translateY(1px) rotate(225deg)}
+
+/* --- Smooth open animations --- */
+@keyframes fxPopIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fxExpandIn{
+  from{opacity:0;transform:translateY(-6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.cta-popout[open] .popout-panel{animation:fxPopIn .18s ease both}
+.full-review[open] .expanded-review{animation:fxExpandIn .24s ease both}
+
+/* --- Carousel arrows: crisp centered chevrons --- */
+.media-nav.prev,
+.media-nav.next{
+  font-size:0!important;
+  position:relative;
+  color:var(--purple);
+}
+.media-nav.prev::after,
+.media-nav.next::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:9px;
+  height:9px;
+  border-right:2px solid var(--purple);
+  border-bottom:2px solid var(--purple);
+}
+.media-nav.prev::after{transform:translate(-30%,-50%) rotate(135deg)}
+.media-nav.next::after{transform:translate(-70%,-50%) rotate(-45deg)}
+.media-nav.prev:hover,
+.media-nav.next:hover{border-color:var(--purple);background:#f7f6ff}
+
+/* --- Sticky CTA: hidden until hero is scrolled away --- */
+.sticky-cta{
+  position:fixed;
+  left:50%;
+  bottom:16px;
+  margin:0;
+  z-index:60;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,14px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.sticky-cta.is-visible{
+  opacity:1;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+}
+.sticky-cta-close{
+  flex:none;
+  width:26px;
+  height:26px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  font-size:16px;
+  line-height:1;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+}
+.sticky-cta-close:hover{background:rgba(255,255,255,.28)}
+@media(max-width:680px){
+  .sticky-cta{width:calc(100% - 32px)}
+  .sticky-cta.is-visible{transform:translate(-50%,0)}
+  .sticky-cta-close{position:absolute;top:10px;right:10px}
+}
+
+/* ============================================================
+   FxScouts v6 — navbar parity with live fxscouts.com
+   Measured live: 60px bar, #F5F8FC bg, 164px logo, 17px/500
+   nav links (no carets), 11px outline login pill w/ icon,
+   plain 20px icons, white mega panel w/ grey category tabs.
+   ============================================================ */
+
+/* --- Bar --- */
+.site-header.fx-header{
+  background:var(--paper);
+  border-bottom:1px dashed rgba(111,95,244,.45);
+  box-shadow:none;
+}
+.fx-header-inner{min-height:60px;gap:20px}
+.fx-logo img{width:164px}
+
+/* --- Nav links: 17px / 500, no carets on desktop --- */
+.fx-menu{gap:2px}
+.fx-menu-trigger{
+  font-size:17px!important;
+  font-weight:500!important;
+  min-height:60px;
+  padding:0 15px;
+  color:var(--ink);
+}
+.site-header.fx-header .fx-menu-trigger:hover,
+.site-header.fx-header .fx-menu-trigger:focus-visible{
+  background:transparent;
+  color:var(--purple)!important;
+}
+@media(min-width:1181px){
+  .fx-header:not(.nav-open) .fx-menu-trigger::after{display:none}
+}
+
+/* --- Login pill: 11px / 600 with icon --- */
+.fx-login{
+  gap:8px;
+  font-size:11px;
+  font-weight:600;
+  padding:9px 20px;
+  min-height:36px;
+  border-color:var(--purple);
+  color:var(--purple);
+}
+.fx-login svg{flex:none}
+.fx-login:hover,
+.fx-login:focus-visible{background:#f3f1ff}
+
+/* --- Icon buttons: plain icons, no chrome --- */
+.fx-icon-button{
+  width:34px;
+  height:34px;
+  border:0;
+  background:transparent;
+  color:var(--ink);
+}
+.fx-icon-button:hover,
+.fx-icon-button:focus-visible{
+  background:transparent;
+  color:var(--purple);
+}
+.fx-header-actions{gap:10px}
+
+/* --- Sticky offsets follow the 60px bar --- */
+.toc-bar{top:59px}
+.fx-search-panel{inset:60px 0 auto;min-height:calc(100vh - 60px)}
+
+/* --- Mega menu: live-site panel --- */
+.fx-mega{
+  top:100%;
+  border:0;
+  border-radius:0 0 10px 10px;
+  box-shadow:0 30px 60px rgba(0,39,79,.22),0 4px 14px rgba(0,39,79,.10);
+  padding:20px 24px;
+  gap:20px;
+}
+.fx-mega-tabs{
+  background:transparent;
+  padding:0;
+  gap:10px;
+  border-radius:0;
+}
+.fx-mega-tabs button{
+  background:var(--grey-mid);
+  color:var(--purple);
+  border:0;
+  border-radius:4px;
+  font-size:14px;
+  font-weight:600;
+  padding:9px 18px;
+}
+.fx-mega-tabs button:hover,
+.fx-mega-tabs button:focus-visible,
+.fx-mega-tabs button.is-active{
+  background:#fff;
+  color:var(--ink);
+  border:0;
+  box-shadow:0 2px 10px rgba(0,39,79,.22);
+}
+.fx-link-grid{gap:4px 16px}
+.fx-link-grid a{
+  border:0;
+  background:transparent;
+  border-radius:6px;
+  min-height:56px;
+  padding:8px 10px 8px 52px;
+  transition:background .14s ease;
+}
+.fx-link-grid a::before{
+  left:10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:32px;
+  height:32px;
+  border-radius:4px;
+  background:linear-gradient(90deg,var(--purple),var(--plum));
+  box-shadow:none;
+}
+.fx-link-grid a:hover,
+.fx-link-grid a:focus-visible{
+  background:var(--paper);
+  border:0;
+  transform:none;
+}
+.fx-link-grid a:hover strong{color:var(--purple)}
+.fx-link-grid strong{font-size:14px;font-weight:600!important}
+.fx-link-grid span{font-size:12px}
+.fx-mega-panel h3{font-size:18px;margin-bottom:8px}
+.fx-broker-filter input{border-radius:8px}
+
+/* --- Desktop hamburger opens the drawer (like live site) --- */
+@media(min-width:1181px){
+  .fx-menu-toggle{display:grid}
+  .fx-header.nav-open .fx-main-nav{
+    position:fixed;
+    top:60px;
+    right:0;
+    bottom:0;
+    width:min(430px,100vw);
+    padding:18px;
+    background:#fff;
+    border-left:1px solid var(--line);
+    box-shadow:-18px 0 50px rgba(8,20,58,.16);
+    overflow:auto;
+    z-index:130;
+    justify-self:auto;
+  }
+  .fx-header:not(.nav-open) .fx-main-nav{position:static}
+  .fx-header.nav-open .fx-menu{flex-direction:column;align-items:stretch;gap:8px}
+  .fx-header.nav-open .fx-menu-trigger{
+    width:100%;
+    justify-content:space-between;
+    min-height:48px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--paper);
+    padding:0 14px;
+    font-size:15px!important;
+  }
+  .fx-header.nav-open .fx-mega{
+    position:static;
+    width:100%;
+    max-height:none;
+    display:none;
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:8px;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:none;
+    transform:none;
+  }
+  .fx-header.nav-open .fx-menu-item.is-open .fx-mega{
+    display:grid;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .fx-header.nav-open .fx-mega-tabs{display:flex;overflow-x:auto}
+  .fx-header.nav-open .fx-mega-tabs button{flex:0 0 auto;width:auto;white-space:nowrap}
+  .fx-header.nav-open .fx-link-grid{grid-template-columns:1fr}
+  .fx-header.nav-open .fx-menu-promo{display:none}
+  .fx-header.nav-open .fx-drawer-extras{
+    display:grid;
+    gap:10px;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+}
+
+/* --- Mobile offsets for 60px bar --- */
+@media(max-width:1180px){
+  .fx-main-nav{top:60px}
+  .site-header.fx-header .fx-menu-trigger{font-size:15px!important}
+}
+
+/* v6.1 — mega panel centers on the viewport (like live), not the item */
+@media(min-width:1181px){
+  .fx-menu-item .fx-mega{
+    position:fixed;
+    top:60px;
+    left:50%;
+    transform:translate(-50%,8px);
+  }
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega{
+    transform:translate(-50%,0);
+  }
+}
+
+/* v6.2 — mobile drawer: megas stay static and full-width */
+@media(max-width:1180px){
+  .fx-mega,
+  .fx-menu-item.is-open .fx-mega,
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega{
+    position:static;
+    left:auto;
+    top:auto;
+    width:100%;
+    transform:none;
+    box-shadow:none;
+    border-radius:12px;
+    padding:12px;
+  }
+  .fx-mega-tabs button{padding:8px 14px}
+}
+
+/* ============================================================
+   FxScouts v7 — card detail polish
+   ============================================================ */
+
+/* Rank badge: award chip, clearly not a button */
+.rank-badge{
+  background:var(--mint);
+  color:var(--navy);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.01em;
+  padding:6px 12px;
+  border-radius:8px;
+}
+.rank-badge::before{
+  content:"\2605";
+  font-size:11px;
+  margin-right:7px;
+}
+
+/* Stat tiles: label above value, centered (prop MiniReviewCards) */
+.compact-meta{gap:10px}
+.compact-meta span{
+  display:flex;
+  flex-direction:column-reverse;
+  justify-content:center;
+  align-items:center;
+  gap:4px;
+  min-height:84px;
+  padding:10px 12px;
+  text-align:center;
+  font-size:11px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:#7C8A99;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 1px 0 rgba(15,23,42,.04);
+}
+.compact-meta b{
+  font-size:14px;
+  font-weight:600;
+  line-height:1.35;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--ink);
+}
+@media(max-width:680px){
+  .compact-meta{grid-template-columns:1fr 1fr}
+}
+
+/* Popout CTAs: no arrows */
+.cta-popout summary.review-link::after,
+.cta-popout summary.button::after{display:none}
+
+/* App type: plain colored label, no pill chrome */
+.type-pill{
+  background:transparent;
+  border:0;
+  padding:2px 0;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--banking);
+}
+
+/* v7.1 — center popout links in rail; restore Yes/No tile colors */
+.review-actions .cta-popout{display:flex;flex-direction:column;align-items:center}
+.compact-meta b.yes{color:var(--emerald)}
+.compact-meta b.no{color:#C0392B}
+
+/* ============================================================
+   FxScouts v8 — real SVG header icons (replace CSS drawings)
+   ============================================================ */
+.fx-search-toggle::before,
+.fx-search-toggle::after,
+.fx-lang-toggle::before,
+.fx-lang-toggle::after{display:none!important}
+.fx-menu-toggle span{display:none!important}
+.fx-icon-button{
+  width:36px;
+  height:36px;
+  border:0;
+  background:transparent;
+  color:var(--ink);
+  padding:0;
+}
+.fx-icon-button svg{display:block}
+.fx-icon-button:hover,
+.fx-icon-button:focus-visible{color:var(--purple);background:transparent}
+.fx-menu-toggle{display:grid;place-items:center}
+@media(max-width:1180px){
+  .fx-icon-button{width:36px;height:36px}
+}
+.fx-header-actions{gap:12px}
+
+/* ============================================================
+   FxScouts v9 — stat tiles readable, award badge upgraded
+   ============================================================ */
+.compact-meta{gap:12px}
+.compact-meta span{
+  min-height:96px;
+  padding:14px 12px;
+  gap:6px;
+  font-size:11.5px;
+  letter-spacing:.07em;
+  color:#64748b;
+  border-radius:12px;
+}
+.compact-meta b{
+  font-size:17px;
+  font-weight:700;
+  line-height:1.3;
+}
+.review-body .best-for{font-size:16px}
+
+/* Award badge: gradient teal, more presence */
+.rank-badge{
+  background:linear-gradient(90deg,var(--mint),var(--emerald));
+  color:var(--navy);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.02em;
+  padding:8px 16px;
+  border-radius:10px;
+  box-shadow:0 4px 14px rgba(0,188,188,.35);
+}
+.rank-badge::before{
+  content:"\2605";
+  font-size:12px;
+  margin-right:8px;
+}
+
+/* ============================================================
+   FxScouts v10 — live-site hover states
+   (.submenu-item:hover → purple text + square grows 32→36px;
+    top nav links → deep underline)
+   ============================================================ */
+.fx-menu-trigger:hover,
+.fx-menu-trigger:focus-visible{
+  color:var(--ink)!important;
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:21px;
+}
+@media(max-width:1180px){
+  .fx-menu-trigger:hover,
+  .fx-menu-trigger:focus-visible{text-decoration:none}
+}
+.fx-link-grid a{padding-left:56px}
+.fx-link-grid a:hover,
+.fx-link-grid a:focus-visible{background:transparent}
+.fx-link-grid a::before{
+  width:32px;
+  height:32px;
+  transition:width .15s ease,height .15s ease;
+}
+.fx-link-grid a:hover::before,
+.fx-link-grid a:focus-visible::before{
+  width:36px;
+  height:36px;
+}
+.fx-link-grid a:hover strong,
+.fx-link-grid a:hover span,
+.fx-link-grid a:focus-visible strong,
+.fx-link-grid a:focus-visible span{color:var(--purple)}
+
+/* ============================================================
+   FxScouts v11 — dropdown open/close: hover-intent delay
+   + smooth fade/slide both directions
+   ============================================================ */
+@media(min-width:1181px){
+  /* closing: 150ms grace period, then fade out; hide after fade */
+  .fx-menu-item .fx-mega{
+    transition:
+      opacity .2s ease .15s,
+      transform .2s ease .15s,
+      visibility 0s linear .35s;
+  }
+  /* opening: 120ms hover-intent delay, then fade/slide in */
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega{
+    transition:
+      opacity .22s ease .12s,
+      transform .22s ease .12s,
+      visibility 0s linear .12s;
+  }
+}
+
+/* ============================================================
+   FxScouts v12 — flowing nav indicator + sidebar hover
+   ============================================================ */
+.fx-menu{position:relative}
+.fx-nav-indicator{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0;
+  height:2px;
+  border-radius:2px;
+  background:var(--ink);
+  opacity:0;
+  pointer-events:none;
+  list-style:none;
+  transition:
+    left .3s cubic-bezier(.4,0,.2,1),
+    width .3s cubic-bezier(.4,0,.2,1),
+    opacity .18s ease;
+}
+@media(max-width:1180px){
+  .fx-nav-indicator{display:none}
+}
+.fx-header.nav-open .fx-nav-indicator{display:none}
+/* the flowing indicator replaces the per-item underline on hover;
+   keep the underline for keyboard focus only */
+@media(min-width:1181px){
+  .fx-menu-trigger:hover{text-decoration:none}
+}
+/* drawer sidebar links: hover feedback */
+.fx-drawer-extras a:hover,
+.fx-drawer-extras a:focus-visible{color:var(--purple)}
+
+/* ============================================================
+   FxScouts v13 — rank marker: editorial label, not a chip
+   ============================================================ */
+.rank-badge{
+  background:transparent;
+  box-shadow:none;
+  border-radius:0;
+  padding:0;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--emerald);
+}
+.rank-badge::before{
+  content:"\2605";
+  font-size:11px;
+  margin-right:6px;
+}
+
+/* ============================================================
+   FxScouts v14 — mega menu opens like live fxscouts.com:
+   max-height curtain @ .5s cubic-bezier(.4,0,.2,1)
+   + inner content fade (measured from live DOM)
+   ============================================================ */
+@media(min-width:1181px){
+  .fx-menu-item .fx-mega{
+    position:fixed;
+    top:60px;
+    left:50%;
+    transform:translateX(-50%);
+    display:grid;
+    visibility:visible;
+    opacity:1;
+    max-height:0;
+    overflow:hidden;
+    padding-top:0;
+    padding-bottom:0;
+    pointer-events:none;
+    box-shadow:0 30px 60px rgba(0,39,79,0),0 4px 14px rgba(0,39,79,0);
+    transition:
+      max-height .45s cubic-bezier(.4,0,.2,1) .15s,
+      padding .45s cubic-bezier(.4,0,.2,1) .15s,
+      box-shadow .3s ease .15s;
+  }
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega{
+    max-height:calc(100vh - 76px);
+    overflow:hidden;
+    padding-top:20px;
+    padding-bottom:24px;
+    pointer-events:auto;
+    transform:translateX(-50%);
+    box-shadow:0 30px 60px rgba(0,39,79,.22),0 4px 14px rgba(0,39,79,.10);
+    transition:
+      max-height .5s cubic-bezier(.4,0,.2,1) .12s,
+      padding .5s cubic-bezier(.4,0,.2,1) .12s,
+      box-shadow .35s ease .12s;
+  }
+  .fx-menu-item .fx-mega > *{opacity:0;transition:opacity .2s ease}
+  .fx-menu-item:hover .fx-mega > *,
+  .fx-menu-item:focus-within .fx-mega > *,
+  .fx-menu-item.is-open .fx-mega > *{
+    opacity:1;
+    transition:opacity .35s ease .25s;
+  }
+}
+
+/* ============================================================
+   FxScouts v15 — hamburger opens a mega-style panel (live
+   pattern: sidebar tabs + link grid + promo + close button)
+   ============================================================ */
+@media(min-width:1181px){
+  .fx-hamburger-mega{
+    position:fixed;
+    top:60px;
+    left:50%;
+    transform:translateX(-50%);
+    display:grid;
+    grid-template-columns:210px minmax(0,1fr) 210px;
+    width:min(1060px,calc(100vw - 48px));
+    visibility:visible;
+    opacity:1;
+    max-height:0;
+    overflow:hidden;
+    padding-top:0;
+    padding-bottom:0;
+    pointer-events:none;
+    box-shadow:0 30px 60px rgba(0,39,79,0),0 4px 14px rgba(0,39,79,0);
+    transition:
+      max-height .45s cubic-bezier(.4,0,.2,1),
+      padding .45s cubic-bezier(.4,0,.2,1),
+      box-shadow .3s ease;
+  }
+  .fx-hamburger-mega.is-open{
+    max-height:calc(100vh - 76px);
+    padding-top:20px;
+    padding-bottom:24px;
+    pointer-events:auto;
+    box-shadow:0 30px 60px rgba(0,39,79,.22),0 4px 14px rgba(0,39,79,.10);
+    transition:
+      max-height .5s cubic-bezier(.4,0,.2,1),
+      padding .5s cubic-bezier(.4,0,.2,1),
+      box-shadow .35s ease;
+  }
+  .fx-hamburger-mega > *{opacity:0;transition:opacity .2s ease}
+  .fx-hamburger-mega.is-open > *{opacity:1;transition:opacity .35s ease .2s}
+}
+@media(max-width:1180px){
+  .fx-hamburger-mega{display:none!important}
+}
+.fx-hamburger-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  width:32px;
+  height:32px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  text-shadow:0 1px 4px rgba(0,0,0,.4);
+}
+.fx-hamburger-close:hover{color:var(--mint)}
+.fx-hamburger-mega .fx-menu-promo{position:relative;min-height:240px}
+
+/* ============================================================
+   FxScouts v16 — stat tiles: labels share one top line;
+   broker lists slightly smaller
+   ============================================================ */
+.compact-meta span{
+  justify-content:flex-end; /* column-reverse: packs label+value to the top */
+}
+.compact-meta span:nth-child(2) b{
+  font-size:14px;
+  line-height:1.4;
+}
