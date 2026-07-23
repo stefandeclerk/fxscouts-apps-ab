@@ -823,51 +823,6 @@ The main limitation is that the app is not designed to replace a full desktop tr
   </div>
 </footer><script>const buttons=document.querySelectorAll('.filter-chips button');const rows=document.querySelectorAll('.comparison-table tbody tr');const empty=document.querySelector('.empty-state');buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;let visible=0;rows.forEach(row=>{const show=filter==='all'||row.dataset.category.split(' ').includes(filter);row.hidden=!show;if(show)visible+=1;});if(empty)empty.hidden=visible!==0;}));</script><script>
 (function () {
-  const sticky = document.getElementById('sticky-cta');
-  if (!sticky) return;
-  /* A/B: variant B (bottom bar) is opted into with ?cta=b —
-     variant A (default) keeps the toc-bar pill instead */
-  const variantB = new URLSearchParams(location.search).get('cta') === 'b';
-  document.body.classList.toggle('cta-b', variantB);
-  if (!variantB) return;
-
-  const KEY = 'fx-compare-cta-dismissed';
-  let dismissed = false;
-  try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
-  const closeBtn = sticky.querySelector('.sticky-cta-close');
-  const compareSection = document.getElementById('compare');
-
-  const hero = document.querySelector('.hero');
-  function updateSticky() {
-    if (dismissed) { sticky.classList.remove('is-visible'); return; }
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    /* earned appearance: the hero has been scrolled past */
-    const engaged = hero
-      ? window.scrollY > hero.offsetTop + hero.offsetHeight - 200
-      : (max > 0 && window.scrollY / max > 0.1);
-    /* suppressed while the comparison section itself is on screen */
-    let inCompare = false;
-    if (compareSection) {
-      const r = compareSection.getBoundingClientRect();
-      inCompare = r.top < window.innerHeight && r.bottom > 0;
-    }
-    /* and suppressed near the footer */
-    const nearBottom = max - window.scrollY < 300;
-    sticky.classList.toggle('is-visible', engaged && !inCompare && !nearBottom);
-  }
-  window.addEventListener('scroll', updateSticky, { passive: true });
-  window.addEventListener('resize', updateSticky);
-  updateSticky();
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      dismissed = true; /* dismissal sticks across visits */
-      try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      sticky.classList.remove('is-visible');
-    });
-  }
-})();
-</script><script>
-(function () {
   /* Flowing nav underline: one indicator glides between hovered items */
   const nav = document.querySelector('.fx-menu');
   if (!nav) return;
