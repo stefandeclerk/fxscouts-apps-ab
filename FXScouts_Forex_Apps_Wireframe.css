@@ -3533,3 +3533,14 @@ body.cta-b .toc-bar a.toc-compare{display:none!important}
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+
+/* v19 — affiliate broker links in the comparison table */
+.comparison-table .table-broker-link{
+  color:var(--purple);
+  font-weight:600;
+}
+.comparison-table .table-broker-link:hover,
+.comparison-table .table-broker-link:focus-visible{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
