@@ -826,9 +826,9 @@ The main limitation is that the app is not designed to replace a full desktop tr
 (function () {
   const sticky = document.getElementById('sticky-cta');
   if (!sticky) return;
-  /* A/B: variant B (bottom bar) is opted into with ?cta=b —
-     variant A (default) keeps the toc-bar pill instead */
-  const variantB = new URLSearchParams(location.search).get('cta') === 'b';
+  /* This file IS variant B — bottom compare bar, hard-wired.
+     (index.html serves variant A, or B via ?cta=b) */
+  const variantB = true;
   document.body.classList.toggle('cta-b', variantB);
   if (!variantB) return;
 

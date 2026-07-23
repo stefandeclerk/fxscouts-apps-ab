@@ -2104,7 +2104,7 @@ figcaption,
 /* --- Bar --- */
 .site-header.fx-header{
   background:var(--paper);
-  border-bottom:1px dashed rgba(111,95,244,.45);
+  border-bottom:1px solid var(--grey-mid);
   box-shadow:none;
 }
 .fx-header-inner{min-height:60px;gap:20px}
@@ -2811,17 +2811,46 @@ figcaption,
   clip:rect(0 0 0 0);
 }
 
-/* Directional slide between sidebar categories */
+/* Directional slide between sidebar categories: true carousel —
+   both panels travel full-height as one strip, old pushed out
+   one edge while the new slides in from the other, clipped at
+   the panel frame. No fades. */
 @keyframes fxPanelFromBottom{
-  from{opacity:0;transform:translateY(18px)}
-  to{opacity:1;transform:none}
+  from{transform:translateY(106%)}
+  to{transform:none}
 }
 @keyframes fxPanelFromTop{
-  from{opacity:0;transform:translateY(-18px)}
-  to{opacity:1;transform:none}
+  from{transform:translateY(-106%)}
+  to{transform:none}
 }
-.fx-mega-panel.fx-slide-down{animation:fxPanelFromBottom .28s ease both}
-.fx-mega-panel.fx-slide-up{animation:fxPanelFromTop .28s ease both}
+@keyframes fxPanelExitUp{
+  from{transform:none}
+  to{transform:translateY(-106%)}
+}
+@keyframes fxPanelExitDown{
+  from{transform:none}
+  to{transform:translateY(106%)}
+}
+.fx-mega-panels{position:relative;overflow:hidden}
+.fx-mega-panel.fx-slide-down{animation:fxPanelFromBottom .32s cubic-bezier(.4,0,.2,1) both;position:relative;z-index:1}
+.fx-mega-panel.fx-slide-up{animation:fxPanelFromTop .32s cubic-bezier(.4,0,.2,1) both;position:relative;z-index:1}
+/* outgoing panel: kept visible as an overlay while it animates out
+   (top/left/right mirror .fx-mega-panels' 24/28px padding) */
+.fx-mega-panel.fx-leave-up,
+.fx-mega-panel.fx-leave-down{
+  display:block;
+  position:absolute;
+  top:24px;
+  left:28px;
+  right:28px;
+  pointer-events:none;
+  z-index:0;
+}
+.fx-mega-panel.fx-leave-up{animation:fxPanelExitUp .32s cubic-bezier(.4,0,.2,1) both}
+.fx-mega-panel.fx-leave-down{animation:fxPanelExitDown .32s cubic-bezier(.4,0,.2,1) both}
+/* tabbed menus: the sidebar already names the category — drop the
+   duplicate panel heading (simple menus keep theirs) */
+.fx-mega-panels .fx-mega-panel h3{display:none}
 
 /* ✕ on nav megas */
 .fx-mega-x{
@@ -2897,4 +2926,610 @@ figcaption,
 .site-header.fx-header .fx-menu-item:hover > .fx-menu-trigger,
 .site-header.fx-header .fx-menu-item.is-open > .fx-menu-trigger{
   color:var(--emerald)!important;
+}
+
+/* ============================================================
+   FxScouts v19 — live-site detail pass:
+   panel floats a step below the bar; no nav underline
+   ============================================================ */
+/* no underline anywhere on nav triggers — kill the flowing
+   indicator and the v10 hover/focus underline */
+.fx-nav-indicator{display:none!important}
+.fx-menu-trigger:hover,
+.fx-menu-trigger:focus-visible{text-decoration:none!important}
+@media(min-width:1181px){
+  /* slight gap: panels drop from 12px below the 60px bar
+     (panels are position:fixed since v14, so this is viewport-relative) */
+  .fx-menu-item .fx-mega,
+  .fx-hamburger-mega{top:72px}
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item:hover .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item:focus-within .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item.is-open .fx-mega,
+  .fx-hamburger-mega.is-open{max-height:calc(100vh - 88px)}
+  /* invisible bridge under each item keeps :hover alive while the
+     pointer crosses the gap (the panel's own ::before bridge is
+     clipped by the curtain's overflow:hidden) */
+  .fx-menu-item::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    height:12px;
+  }
+  /* notch caret rides the panel's top edge, not the bar */
+  .fx-menu-item::before{bottom:-12px}
+
+  /* Brokers menu: circular logo chips with a violet ring, like
+     the live site (photos in that menu go circular too) */
+  .fx-mega[aria-label="Brokers menu"] .fx-thumb{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .fx-mega[aria-label="Brokers menu"] .fx-thumb-logo{
+    border:2px solid #B18CF0;
+    padding:5px;
+    background:#fff;
+    object-fit:contain;
+  }
+  .fx-mega[aria-label="Brokers menu"] .fx-link-grid a:hover .fx-thumb{
+    width:45px;
+    height:45px;
+  }
+}
+
+/* ============================================================
+   FxScouts v20 — live-menu proportions + sidebar treatment:
+   narrower panel; sidebar is a translucent grey column outside
+   the white sheet; tabs are chunky grey buttons w/ purple text;
+   active tab is white w/ purple accent bar + arrow notch
+   ============================================================ */
+@media(min-width:1181px){
+  .fx-menu-item .fx-mega,
+  .fx-hamburger-mega{
+    width:min(1100px,calc(100vw - 48px));
+    grid-template-columns:222px minmax(0,1fr) 225px;
+    background:transparent; /* the page shows through the sidebar column */
+  }
+  .fx-mega-simple{
+    width:min(760px,calc(100vw - 48px));
+    grid-template-columns:minmax(0,1fr);
+  }
+  /* the white sheet lives on the content + promo columns only */
+  .fx-mega-panels,
+  .fx-mega-simple > .fx-mega-panel{background:#fff}
+  .fx-mega-tabs{
+    /* translucent enough that the scrimmed page darkens it,
+       like the live menu */
+    background:rgba(210,218,228,.5);
+    padding:18px 14px 18px 16px;
+    gap:8px;
+  }
+  .fx-mega-tabs button{
+    font-size:16px;
+    font-weight:700!important; /* outweigh the 600!important typography pass */
+    padding:13px 16px;
+    border-radius:8px;
+    background:var(--grey-mid);
+    color:var(--purple);
+    white-space:nowrap; /* "Trust & Transparency" stays on one line */
+  }
+  .fx-mega-tabs button:hover,
+  .fx-mega-tabs button:focus-visible,
+  .fx-mega-tabs button.is-active{
+    background:#fff;
+    color:var(--ink);
+  }
+  /* active tab: purple accent bar hugging the left edge */
+  .fx-mega-tabs button.is-active::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:5px;
+    border-radius:8px 0 0 8px;
+    background:var(--purple);
+  }
+}
+
+/* ============================================================
+   FxScouts v21 — one motion system, no flicker:
+   retires the max-height curtain + staggered child fades in
+   favour of a single fade/8px-drop; switching menus while one
+   is open crossfades in place with no slide
+   ============================================================ */
+@media(min-width:1181px){
+  .fx-menu-item .fx-mega,
+  .fx-hamburger-mega{
+    max-height:calc(100vh - 88px);
+    overflow:auto;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(-50%) translateY(-8px);
+    box-shadow:0 30px 60px rgba(0,39,79,.22),0 4px 14px rgba(0,39,79,.10);
+    /* closing: 120ms grace, then one gentle fade-out */
+    transition:
+      opacity .2s ease .12s,
+      transform .22s ease .12s,
+      visibility 0s linear .34s;
+  }
+  .fx-menu-item:hover .fx-mega,
+  .fx-menu-item:focus-within .fx-mega,
+  .fx-menu-item.is-open .fx-mega,
+  .fx-hamburger-mega.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    overflow:auto;
+    transform:translateX(-50%) translateY(0);
+    /* opening: 170ms intent — long enough that brushing across
+       the bar produces no partial opens — then fade + soft drop */
+    transition:
+      opacity .22s ease .17s,
+      transform .26s cubic-bezier(.22,.61,.36,1) .17s,
+      visibility 0s linear .17s;
+  }
+  /* children render at full opacity always — no second fade layer */
+  .fx-menu-item .fx-mega > *,
+  .fx-hamburger-mega > *{opacity:1!important;transition:none!important}
+  /* switching menus while one is open: pure crossfade, no slide,
+     no intent delay */
+  .fx-header.fx-menu-hot .fx-menu-item .fx-mega{
+    transform:translateX(-50%) translateY(0);
+    transition:
+      opacity .16s ease,
+      visibility 0s linear .16s;
+  }
+  .fx-header.fx-menu-hot .fx-menu-item:hover .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item:focus-within .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item.is-open .fx-mega{
+    opacity:1;
+    visibility:visible;
+    transition:opacity .16s ease;
+  }
+  /* notch caret follows the same rhythm */
+  .fx-menu-item::before{transition:opacity .18s ease .17s}
+  .fx-menu-item:hover::before,
+  .fx-menu-item:focus-within::before,
+  .fx-menu-item.is-open::before{transition:opacity .18s ease .17s}
+  .fx-header.fx-menu-hot .fx-menu-item::before{transition:opacity .14s ease}
+}
+
+/* ============================================================
+   FxScouts v22 — live-menu check pass:
+   Tools/Learn/About carry the promo column; squarer sidebar
+   tabs; dark page scrim while a menu is open; dip-free
+   crossfade — the incoming panel fades in ON TOP of the
+   still-opaque outgoing panel, so the page never flashes
+   through mid-switch
+   ============================================================ */
+@media(min-width:1181px){
+  /* simple menus (Tools/Learn): content + promo, no sidebar
+     (selector outweighs the v17.2 single-column rule) */
+  .fx-menu-item .fx-mega.fx-mega-simple{
+    width:min(880px,calc(100vw - 48px));
+    grid-template-columns:minmax(0,1fr) 225px;
+  }
+  /* sidebar tabs: slightly squarer corners */
+  .fx-mega-tabs button{border-radius:5px}
+  .fx-mega-tabs button.is-active::before{border-radius:5px 0 0 5px}
+  /* dark overlay dims the page while any menu is open —
+     heavy slate-blue, matched to the live site's scrim */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:45;
+    background:rgba(23,52,82,.66);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease .1s;
+  }
+  body:has(.fx-menu-item.has-mega:hover)::before,
+  body:has(.fx-menu-item.is-open)::before,
+  body:has(.fx-menu-item:focus-within)::before,
+  body:has(.fx-hamburger-mega.is-open)::before{opacity:1}
+  /* dip-free switch: outgoing panel stays fully opaque underneath
+     while the incoming one fades in above it, then leftover edges
+     fade and the panel is released */
+  .fx-header.fx-menu-hot .fx-menu-item .fx-mega{
+    z-index:1;
+    opacity:0;
+    transform:translateX(-50%) translateY(0);
+    transition:
+      opacity .18s ease .12s,
+      visibility 0s linear .3s;
+  }
+  .fx-header.fx-menu-hot .fx-menu-item:hover .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item:focus-within .fx-mega,
+  .fx-header.fx-menu-hot .fx-menu-item.is-open .fx-mega{
+    z-index:2;
+    opacity:1;
+    visibility:visible;
+    transition:opacity .16s ease;
+  }
+}
+
+/* ============================================================
+   FxScouts v23 — hero proportions (live-site scale):
+   bigger H1, tighter left decision module
+   ============================================================ */
+.intro-card h1{
+  font-size:clamp(42px,4.5vw,62px);
+  line-height:1.1;
+}
+/* bottom-anchor the module to the CTA row in the right column:
+   natural compact height, tight row gaps, top edge drops down */
+.hero-layout{align-items:stretch}
+.decision-module{
+  padding:20px 18px;
+  align-self:flex-end;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start; /* keep the pill from stretching */
+}
+.decision-module .ranked-decisions{width:100%}
+.decision-module h2{font-size:29px;margin-bottom:6px}
+.decision-module p{font-size:14px;line-height:1.45;margin-bottom:12px}
+.decision-module .wireframe-tag{font-size:12px;padding:6px 12px;margin-bottom:12px}
+.ranked-decisions{gap:7px}
+.decision-card{padding:8px 38px 8px 9px;gap:9px}
+.app-logo{width:38px;height:38px;padding:4px;border-radius:9px}
+.decision-card strong{font-size:14.5px}
+.decision-card small{font-size:12.5px;line-height:1.3}
+/* live site shows no rank numbers or chevrons on these rows */
+.decision-card::before{content:none}
+.decision-card::after{content:none}
+.decision-card{grid-template-columns:auto 1fr;padding:9px 12px 9px 9px}
+/* gradient-clipped spans render color:transparent, so the h1's
+   inherited text-shadow bleeds through the glyphs and muddies
+   the gradient — kill it on the accent */
+.text-accent{text-shadow:none}
+
+/* ============================================================
+   FxScouts v24 — primary buttons: subtle purple gradient
+   (trading-journal style: lighter top-left → deeper right)
+   ============================================================ */
+.button.primary,
+.hero .button.primary{
+  background:linear-gradient(90deg,#8C76F7 0%,#6D5CF0 100%);
+  border-color:transparent;
+  color:#fff;
+}
+.button.primary:hover,
+.button.primary:focus-visible,
+.hero .button.primary:hover{
+  background:linear-gradient(90deg,#7D66EE 0%,#5F4EE6 100%);
+  border-color:transparent;
+}
+
+/* stat tiles: one value size everywhere — undo the v16 special
+   case that shrank only the second tile */
+.compact-meta b,
+.compact-meta span:nth-child(2) b{font-size:17px;line-height:1.3}
+
+/* ============================================================
+   FxScouts v25 — section rhythm: alternating band backgrounds
+   with hairline separators + a dark methodology anchor band,
+   so sections read as distinct chapters instead of one long
+   pale scroll
+   ============================================================ */
+#apps{background:var(--paper)}
+#compare{
+  background:#fff;
+  border-top:1px solid var(--grey-mid);
+  border-bottom:1px solid var(--grey-mid);
+}
+#finder{background:var(--paper)}
+/* the finder's outer card dissolves into the band — its inner
+   cards (personas, table) carry the surfaces instead */
+#finder .finder-card-wide{
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  padding:0;
+}
+#education{
+  background:#fff;
+  border-top:1px solid var(--grey-mid);
+  border-bottom:1px solid var(--grey-mid);
+}
+#faq{background:var(--paper)}
+#methodology{
+  background:
+    radial-gradient(circle at 88% 8%,rgba(15,224,224,.12),transparent 40%),
+    linear-gradient(160deg,#0E2A52 0%,#123B6E 55%,#1B2E68 100%);
+  color:#fff;
+}
+/* solid section headings — the hero H1 keeps the one gradient
+   accent; everywhere else renders plain navy */
+.section-heading h2,
+.mobile-desktop-section h2,
+.finder-intro h3{
+  background:none;
+  -webkit-text-fill-color:currentColor;
+  color:var(--navy);
+}
+#methodology .section-heading h2{color:#fff}
+#methodology .section-heading p{color:rgba(255,255,255,.78)}
+#methodology .eyebrow{color:var(--mint)}
+/* white cards inside the dark band must not inherit the white text */
+#methodology .method-card,
+#methodology .faq-card,
+#methodology .persona{color:var(--ink)}
+
+/* ============================================================
+   FxScouts v26 — decision helper: full-width horizontal rows
+   (white cards popping on the dark band, purple step markers)
+   ============================================================ */
+.decision-helper-steps{
+  grid-template-columns:1fr;
+  gap:12px;
+}
+.decision-helper-steps > div{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--grey-mid);
+  border-radius:14px;
+  box-shadow:0 1px 2px rgba(15,23,42,.05);
+  padding:16px 20px 16px 58px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.6;
+}
+.decision-helper-steps > div::before{
+  position:absolute;
+  left:16px;
+  top:17px;
+  width:28px;
+  height:28px;
+  background:var(--purple);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+}
+.decision-helper-steps strong{
+  display:block;
+  color:var(--navy);
+  font-size:16px;
+  margin-bottom:4px;
+}
+.decision-helper-steps br{display:none}
+
+/* ============================================================
+   FxScouts v27 — review cards read as separate platform cards:
+   white surface on the paper band (they were paper-on-paper and
+   dissolved), visible border, real shadow, roomier stack gap;
+   inner stat tiles drop to grey so the card stays the hero
+   ============================================================ */
+.review-card{
+  background:#fff;
+  border:1px solid var(--grey-mid);
+  box-shadow:0 6px 24px rgba(0,39,79,.08),0 1px 2px rgba(15,23,42,.05);
+}
+.review-stack{gap:28px}
+.compact-meta span{
+  background:var(--paper);
+  border:1px solid #E7EDF4;
+}
+
+/* ============================================================
+   FxScouts v28 — education band: soft lavender tint so the
+   white compare card reads as a card, zebra rows + grey header
+   inside the trade-offs table
+   ============================================================ */
+#education{
+  background:#fff;
+  border-top:1px solid var(--grey-mid);
+  border-bottom:1px solid var(--grey-mid);
+}
+/* header rows clearly distinct from the body: navy band, white labels */
+.platform-fit-table th,
+.comparison-table th{
+  background:var(--navy);
+  color:#fff;
+  font-weight:600;
+}
+/* mobile vs desktop table: the two value columns carry distinct
+   shades — teal-tinted for mobile, grey-blue for desktop — so
+   the width reads as two compared sides, not empty sprawl */
+.mobile-desktop-table{
+  border:1px solid #E7EDF4;
+  border-radius:14px;
+}
+.mobile-desktop-table table{table-layout:fixed;min-width:0}
+.mobile-desktop-table th:first-child{width:30%}
+.mobile-desktop-table th{
+  background:var(--navy);
+  color:#fff;
+  font-weight:600;
+  font-size:13px;
+  padding:12px 16px;
+}
+.mobile-desktop-table td{
+  padding:12px 16px;
+  font-size:14px;
+  line-height:1.45;
+  border-bottom:1px solid #E7EDF4;
+}
+.mobile-desktop-table tbody tr:last-child td{border-bottom:0}
+/* narrower secondary tables, centered in the column — only the
+   main comparison table runs full width */
+.mobile-desktop-table,
+.platform-fit-table{
+  width:100%;
+  max-width:1000px;
+  margin-inline:auto;
+}
+/* surrounding content follows the same 1000px column: finder
+   intro + persona cards, and the education card (1000 + its
+   own 22px padding each side) */
+#finder .finder-intro,
+#finder .decision-helper-steps{
+  width:100%;
+  max-width:1000px;
+  margin-inline:auto;
+}
+/* intro text flush with the cards below — no offset rail */
+#finder .finder-intro > div{
+  border-left:0;
+  padding-left:0;
+}
+
+/* ============================================================
+   FxScouts v29 — narrower content column everywhere below the
+   hero; header, hero, and toc bar keep the full 1180px measure
+   ============================================================ */
+.container{width:min(1080px,calc(100% - 40px))}
+.fx-header-inner.container,
+.fx-search-content.container,
+.hero .container,
+.toc-bar .container{width:min(1180px,calc(100% - 40px))}
+/* toc menu centered in the bar */
+.toc-bar-inner{justify-content:center}
+.toc-bar a:first-child{padding-left:20px}
+
+/* A/B variants for the compare CTA:
+   A (default)  — pill in the sticky toc bar, no bottom bar
+   B (?cta=b)   — bottom bar w/ best-practice behavior (45%
+                  scroll trigger, persistent dismiss, hidden
+                  inside #compare and near the footer) */
+body:not(.cta-b) .sticky-cta{display:none!important}
+body.cta-b .toc-bar a.toc-compare{display:none!important}
+
+/* meta-pill tooltips: normal cursor, and a hover-intent delay so
+   they don't fire while the pointer is just passing through */
+.meta-pill{cursor:default}
+.meta-pill::after{
+  transition:opacity .15s ease,visibility 0s linear .15s;
+}
+.meta-pill:hover::after,
+.meta-pill:focus::after{
+  transition:opacity .2s ease .5s,visibility 0s linear .5s;
+}
+/* tooltips on the later pills open leftward so they never run
+   off the right edge of the viewport */
+.meta-pill:nth-child(2)::after,
+.meta-pill:nth-child(3)::after{
+  left:auto;
+  right:0;
+}
+
+/* responsive: the finder grid must let its items shrink — the
+   fit table's 820px min was widening the track and pushing the
+   whole page into horizontal scroll on tablets */
+#finder .finder-card-wide{grid-template-columns:minmax(0,1fr)}
+/* small screens: the trade-offs table scrolls inside its frame
+   instead of crushing its fixed-ratio columns */
+@media(max-width:680px){
+  .mobile-desktop-table table{min-width:540px}
+}
+
+/* FAQ cards: tighter padding */
+.faq-card{padding:16px 18px}
+
+/* variant-B bottom bar: tighter footprint */
+.sticky-cta{
+  width:min(620px,calc(100% - 32px));
+  padding:8px 10px 8px 24px;
+  gap:12px;
+}
+.sticky-cta strong{font-size:14.5px}
+.sticky-cta span{font-size:12px}
+.sticky-cta .button{padding:8px 14px;font-size:13px;min-height:0}
+.sticky-cta-close{width:24px;height:24px;font-size:14px}
+
+/* review-card logos: no border box */
+.review-logo{border:0;box-shadow:none}
+
+/* comparison-table thumbnails: borderless, marginally larger
+   than the 34px original */
+.table-app img{
+  width:35px;
+  height:35px;
+  border:0;
+  padding:0;
+}
+.toc-bar .container{position:relative}
+.toc-bar a.toc-compare{
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#fff;
+  color:var(--navy);
+  border:0;
+  border-radius:999px;
+  padding:7px 14px;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.01em;
+  box-shadow:0 2px 8px rgba(20,0,50,.25);
+  transition:background .15s ease,color .15s ease,box-shadow .15s ease;
+}
+.toc-bar a.toc-compare::after{
+  content:"\2192";
+  font-size:12px;
+  line-height:1;
+  transition:transform .15s ease;
+}
+.toc-bar a.toc-compare:hover,
+.toc-bar a.toc-compare:focus-visible{
+  background:linear-gradient(90deg,#4BE0D5 0%,#14C4C4 100%);
+  color:var(--navy);
+  text-decoration:none;
+  box-shadow:0 5px 16px rgba(0,40,40,.4);
+}
+/* rest state: white pill with extra presence — slightly larger,
+   deeper shadow */
+.toc-bar a.toc-compare{
+  background:#fff;
+  color:var(--navy);
+  padding:8px 16px;
+  font-size:13px;
+  box-shadow:0 4px 14px rgba(20,0,50,.45);
+}
+/* grid items in the finder must be allowed to shrink — otherwise
+   the 820px fit table widens the page on tablets */
+#finder .finder-card-wide > *{min-width:0}
+.toc-bar a.toc-compare:hover::after{transform:translateX(3px)}
+/* "Testing method" is no longer the last link — keep it divider-free */
+.toc-bar a:nth-last-child(2){border-right:0}
+@media(max-width:1080px){
+  .toc-bar a.toc-compare{display:none}
+}
+.mobile-desktop-section{
+  max-width:1000px;
+  margin-inline:auto;
+}
+
+/* steer the accent palette off purple: eyebrows carry the brand
+   emerald, step markers go navy — purple stays reserved for
+   interactive elements (buttons, links) */
+.label,.eyebrow{color:var(--emerald)}
+.decision-helper-steps > div::before{background:var(--navy)}
+
+/* "Our Recommendations": quiet uppercase eyebrow instead of a
+   filled pill — mirrors the TOP TIP label treatment */
+.decision-module .wireframe-tag{
+  background:none;
+  box-shadow:none;
+  border-radius:0;
+  padding:0;
+  margin-bottom:10px;
+  color:var(--mint);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
 }
